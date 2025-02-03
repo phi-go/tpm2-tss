@@ -22,6 +22,15 @@
 #include "test-common.h"
 
 int
+LLVMFuzzerInitialize(
+  int argc,
+  char **argv)
+{
+  putenv("TPM20TEST_TCTI=device:/dev/tpm0");
+  return 0;
+}
+
+int
 LLVMFuzzerTestOneInput (
         const uint8_t *Data,
         size_t Size)
